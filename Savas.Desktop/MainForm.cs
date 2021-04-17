@@ -15,8 +15,11 @@ namespace Savas.Desktop
         public MainForm()
         {
             InitializeComponent();
+
+            _game.ElapsedTimeChanged += Game_ElapsedTimeChanged;
         }
 
+        #region Customized design and flexibility
 
         // Form movement start
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -27,7 +30,6 @@ namespace Savas.Desktop
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
         // Form movement end
-
 
         // Box-shadow for form start
         private const int CS_DROPSHADOW = 0x20000;
@@ -42,6 +44,7 @@ namespace Savas.Desktop
         }
         // Box-shadow for form end
 
+        #endregion
 
         private void infoPanel_MouseDown(object sender, MouseEventArgs e)
         {
@@ -69,6 +72,11 @@ namespace Savas.Desktop
                     _game.Fire();
                     break;
             }
+        }
+
+        private void Game_ElapsedTimeChanged(object sender, EventArgs e)
+        {
+            timeLabel.Text = _game.ElapsedTime.ToString(@"m\:ss");
         }
     }
 }

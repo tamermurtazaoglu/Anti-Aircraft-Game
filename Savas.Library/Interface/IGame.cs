@@ -5,6 +5,7 @@ namespace Savas.Library.Interface
 {
     internal interface IGame
     {
+        event EventHandler ElapsedTimeChanged;
         bool DoesItContinue { get; }
         TimeSpan ElapsedTime { get; }
         void Start();
