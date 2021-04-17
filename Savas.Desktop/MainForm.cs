@@ -8,14 +8,12 @@ namespace Savas.Desktop
     public partial class MainForm : Form
     {
 
-        private readonly Game _game = new Game();
-
-
+        private readonly Game _game;
 
         public MainForm()
         {
             InitializeComponent();
-
+            _game = new Game(antiaircraftPanel);
             _game.ElapsedTimeChanged += Game_ElapsedTimeChanged;
         }
 

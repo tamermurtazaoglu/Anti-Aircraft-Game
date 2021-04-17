@@ -46,7 +46,7 @@ namespace Savas.Desktop
             this.infoPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.infoPanel.Location = new System.Drawing.Point(0, 0);
             this.infoPanel.Name = "infoPanel";
-            this.infoPanel.Size = new System.Drawing.Size(784, 94);
+            this.infoPanel.Size = new System.Drawing.Size(800, 94);
             this.infoPanel.TabIndex = 0;
             this.infoPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.infoPanel_MouseDown);
             // 
@@ -55,7 +55,7 @@ namespace Savas.Desktop
             this.timeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.timeLabel.Font = new System.Drawing.Font("Phenomena", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timeLabel.ForeColor = System.Drawing.Color.White;
-            this.timeLabel.Location = new System.Drawing.Point(595, 9);
+            this.timeLabel.Location = new System.Drawing.Point(611, 9);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(177, 69);
             this.timeLabel.TabIndex = 0;
@@ -75,11 +75,11 @@ namespace Savas.Desktop
             // 
             // antiaircraftPanel
             // 
-            this.antiaircraftPanel.BackColor = System.Drawing.Color.Teal;
+            this.antiaircraftPanel.BackColor = System.Drawing.Color.LightGray;
             this.antiaircraftPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.antiaircraftPanel.Location = new System.Drawing.Point(0, 411);
             this.antiaircraftPanel.Name = "antiaircraftPanel";
-            this.antiaircraftPanel.Size = new System.Drawing.Size(784, 50);
+            this.antiaircraftPanel.Size = new System.Drawing.Size(800, 50);
             this.antiaircraftPanel.TabIndex = 1;
             // 
             // warArea
@@ -88,14 +88,14 @@ namespace Savas.Desktop
             this.warArea.Dock = System.Windows.Forms.DockStyle.Fill;
             this.warArea.Location = new System.Drawing.Point(0, 94);
             this.warArea.Name = "warArea";
-            this.warArea.Size = new System.Drawing.Size(784, 317);
+            this.warArea.Size = new System.Drawing.Size(800, 317);
             this.warArea.TabIndex = 2;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 461);
+            this.ClientSize = new System.Drawing.Size(800, 461);
             this.Controls.Add(this.warArea);
             this.Controls.Add(this.antiaircraftPanel);
             this.Controls.Add(this.infoPanel);

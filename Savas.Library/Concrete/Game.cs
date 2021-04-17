@@ -1,6 +1,7 @@
 ﻿using Savas.Library.Enum;
 using Savas.Library.Interface;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Savas.Library.Concrete
@@ -10,6 +11,7 @@ namespace Savas.Library.Concrete
         #region Alanlar
         private readonly Timer _elapsedTimeTimer = new Timer { Interval = 1000 };
         private TimeSpan _elapsedTime;
+        private readonly Panel _antiaircraftPanel;
         #endregion
 
         #region Events
@@ -31,9 +33,11 @@ namespace Savas.Library.Concrete
         #endregion
 
         #region Methods
-        public Game()
+        public Game(Panel antiaircraftPanel)
         {
             _elapsedTimeTimer.Tick += ElapsedTimeTimer_Tick;
+            _antiaircraftPanel = antiaircraftPanel;
+
         }
 
         private void ElapsedTimeTimer_Tick(object sender, EventArgs e)
@@ -56,6 +60,14 @@ namespace Savas.Library.Concrete
             if (DoesItContinue) return;
             DoesItContinue = true;
             _elapsedTimeTimer.Start();
+
+            Create_AntiAircraft();
+        }
+
+        private void Create_AntiAircraft()
+        {
+            var antiAircraft = new Antiaircraft(_antiaircraftPanel.Width) { Image = Image.FromFile(@"Images\anti_aircraft.gif") };
+            _antiaircraftPanel.Controls.Add(antiAircraft);
         }
 
         private void Finish()
