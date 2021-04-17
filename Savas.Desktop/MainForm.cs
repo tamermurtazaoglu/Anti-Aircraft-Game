@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Savas.Library.Concrete;
+using Savas.Library.Enum;
+using System;
 using System.Windows.Forms;
 
 namespace Savas.Desktop
 {
     public partial class MainForm : Form
     {
+
+        private readonly Game _game = new Game();
+
+
+
         public MainForm()
         {
             InitializeComponent();
         }
+
 
         // Form movement start
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -48,6 +49,25 @@ namespace Savas.Desktop
             {
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    _game.Start();
+                    break;
+                case Keys.Right:
+                    _game.Move(Direction.Right);
+                    break;
+                case Keys.Left:
+                    _game.Move(Direction.Left);
+                    break;
+                case Keys.Space:
+                    _game.Fire();
+                    break;
             }
         }
     }

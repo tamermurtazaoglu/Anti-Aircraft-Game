@@ -104,6 +104,7 @@ namespace Savas.Desktop
             this.Name = "MainForm";
             this.Text = "Anti - Aircraft Modern";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.infoPanel.ResumeLayout(false);
             this.infoPanel.PerformLayout();
             this.ResumeLayout(false);

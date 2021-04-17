@@ -114,5 +114,11 @@
     <Content Include="logo_drone_transparent.ico" />
     <Content Include="Resources\logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Savas.Library\Savas.Library.csproj">
+      <Project>{075df632-bb2d-4709-beb5-97c70b42963a}</Project>
+      <Name>Savas.Library</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
