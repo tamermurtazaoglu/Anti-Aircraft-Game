@@ -15,7 +15,7 @@ namespace Savas.Library.Concrete
         {
             Image = Image.FromFile(@"Images\antiaircraft.gif");
             Center = panelWidth / 2;
-            MovingDistance = Width / 10;
+            MovingDistance = Width / 3;
         }
     }
 }

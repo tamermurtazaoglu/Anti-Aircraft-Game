@@ -14,7 +14,7 @@ namespace Savas.Library.Concrete
         {
             Image = Image.FromFile(@"Images\bullet.png");
             SetStartingPosition(centerOfGunbarrelX);
-            MovingDistance = (int)(Height * 0.5);
+            MovingDistance = (int)(Height * 0.25);
         }
 
         private void SetStartingPosition(int centerOfGunbarrelX)

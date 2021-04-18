@@ -11,6 +11,7 @@ namespace Savas.Library.Concrete
     {
         #region Alanlar
         private readonly Timer _elapsedTimeTimer = new Timer { Interval = 1000 };
+        private readonly Timer _moveTimer = new Timer { Interval = 25 };
         private TimeSpan _elapsedTime;
         private readonly Panel _antiaircraftPanel;
         private Antiaircraft _antiaircraft;
@@ -39,9 +40,11 @@ namespace Savas.Library.Concrete
         #region Methods
         public Game(Panel antiaircraftPanel, Panel warareaPanel)
         {
-            _elapsedTimeTimer.Tick += ElapsedTimeTimer_Tick;
             _antiaircraftPanel = antiaircraftPanel;
             _warareaPanel = warareaPanel;
+
+            _elapsedTimeTimer.Tick += ElapsedTimeTimer_Tick;
+            _moveTimer.Tick += MoveTimer_Tick;
         }
 
         private void ElapsedTimeTimer_Tick(object sender, EventArgs e)
@@ -49,20 +52,37 @@ namespace Savas.Library.Concrete
             ElapsedTime += TimeSpan.FromSeconds(1);
         }
 
+        private void MoveTimer_Tick(object sender, EventArgs e)
+        {
+            MoveBullets();
+        }
+
+        private void MoveBullets()
+        {
+            for (int i = _bullets.Count -1; i >= 0; i--)
+            {
+                var bullet = _bullets[i];
+                var didHitToTop = bullet.Move(Direction.Up);
+                if (didHitToTop)
+                {
+                    _bullets.Remove(bullet);
+                    _warareaPanel.Controls.Remove(bullet);
+                }
+            }
+        }
+
         public void Fire()
         {
             if (!DoesItContinue) return;
             
             var bullet = new Bullet(_warareaPanel.Size, _antiaircraft.Center);
+            _bullets.Add(bullet);
             _warareaPanel.Controls.Add(bullet);
-            bullet.Move(Direction.Up);
-
         }
 
         public void MoveAntiaircraft(Direction direction)
         {
             if (!DoesItContinue) return;
-            
             _antiaircraft.Move(direction);
         }
 
@@ -70,9 +90,15 @@ namespace Savas.Library.Concrete
         {
             if (DoesItContinue) return;
             DoesItContinue = true;
-            _elapsedTimeTimer.Start();
+            StartTimers();
 
             Create_AntiAircraft();
+        }
+
+        private void StartTimers()
+        {
+            _elapsedTimeTimer.Start();
+            _moveTimer.Start();
         }
 
         private void Create_AntiAircraft()
@@ -85,7 +111,13 @@ namespace Savas.Library.Concrete
         {
             if (!DoesItContinue) return;
             DoesItContinue = false;
+            FinishTimers();
+        }
+
+        private void FinishTimers()
+        {
             _elapsedTimeTimer.Stop();
+            _moveTimer.Stop();
         }
 
         #endregion
