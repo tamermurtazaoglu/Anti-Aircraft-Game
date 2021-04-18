@@ -34,7 +34,7 @@ namespace Savas.Desktop
             this.timeLabel = new System.Windows.Forms.Label();
             this.infoLabel = new System.Windows.Forms.Label();
             this.antiaircraftPanel = new System.Windows.Forms.Panel();
-            this.warArea = new System.Windows.Forms.Panel();
+            this.warAreaPanel = new System.Windows.Forms.Panel();
             this.infoPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,21 +82,21 @@ namespace Savas.Desktop
             this.antiaircraftPanel.Size = new System.Drawing.Size(800, 50);
             this.antiaircraftPanel.TabIndex = 1;
             // 
-            // warArea
+            // warAreaPanel
             // 
-            this.warArea.BackColor = System.Drawing.Color.Gainsboro;
-            this.warArea.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.warArea.Location = new System.Drawing.Point(0, 94);
-            this.warArea.Name = "warArea";
-            this.warArea.Size = new System.Drawing.Size(800, 317);
-            this.warArea.TabIndex = 2;
+            this.warAreaPanel.BackColor = System.Drawing.Color.Gainsboro;
+            this.warAreaPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.warAreaPanel.Location = new System.Drawing.Point(0, 94);
+            this.warAreaPanel.Name = "warAreaPanel";
+            this.warAreaPanel.Size = new System.Drawing.Size(800, 317);
+            this.warAreaPanel.TabIndex = 2;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 461);
-            this.Controls.Add(this.warArea);
+            this.Controls.Add(this.warAreaPanel);
             this.Controls.Add(this.antiaircraftPanel);
             this.Controls.Add(this.infoPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -115,7 +115,7 @@ namespace Savas.Desktop
 
         private System.Windows.Forms.Panel infoPanel;
         private System.Windows.Forms.Panel antiaircraftPanel;
-        private System.Windows.Forms.Panel warArea;
+        private System.Windows.Forms.Panel warAreaPanel;
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Label infoLabel;
     }

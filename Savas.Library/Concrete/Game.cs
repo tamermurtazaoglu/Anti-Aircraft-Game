@@ -1,6 +1,7 @@
 ﻿using Savas.Library.Enum;
 using Savas.Library.Interface;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -13,6 +14,8 @@ namespace Savas.Library.Concrete
         private TimeSpan _elapsedTime;
         private readonly Panel _antiaircraftPanel;
         private Antiaircraft _antiaircraft;
+        private readonly Panel _warareaPanel;
+        private readonly List<Bullet> _bullets = new List<Bullet>();
         #endregion
 
         #region Events
@@ -34,11 +37,11 @@ namespace Savas.Library.Concrete
         #endregion
 
         #region Methods
-        public Game(Panel antiaircraftPanel)
+        public Game(Panel antiaircraftPanel, Panel warareaPanel)
         {
             _elapsedTimeTimer.Tick += ElapsedTimeTimer_Tick;
             _antiaircraftPanel = antiaircraftPanel;
-
+            _warareaPanel = warareaPanel;
         }
 
         private void ElapsedTimeTimer_Tick(object sender, EventArgs e)
@@ -48,6 +51,12 @@ namespace Savas.Library.Concrete
 
         public void Fire()
         {
+            if (!DoesItContinue) return;
+            
+            var bullet = new Bullet(_warareaPanel.Size, _antiaircraft.Center);
+            _warareaPanel.Controls.Add(bullet);
+            bullet.Move(Direction.Up);
+
         }
 
         public void MoveAntiaircraft(Direction direction)

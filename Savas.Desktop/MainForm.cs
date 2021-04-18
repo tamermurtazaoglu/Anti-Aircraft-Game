@@ -13,7 +13,7 @@ namespace Savas.Desktop
         public MainForm()
         {
             InitializeComponent();
-            _game = new Game(antiaircraftPanel);
+            _game = new Game(antiaircraftPanel,warAreaPanel);
             _game.ElapsedTimeChanged += Game_ElapsedTimeChanged;
         }
 

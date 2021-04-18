@@ -49,6 +49,9 @@
     <Compile Include="Concrete\Antiaircraft.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Concrete\Bullet.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Concrete\Game.cs" />
     <Compile Include="Enum\Direction.cs" />
     <Compile Include="Interface\IGame.cs" />
