@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\AppObject.cs">
+    <Compile Include="Abstract\GameObject.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Concrete\Antiaircraft.cs">
@@ -52,6 +52,7 @@
     <Compile Include="Concrete\Game.cs" />
     <Compile Include="Enum\Direction.cs" />
     <Compile Include="Interface\IGame.cs" />
+    <Compile Include="Interface\IMovable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

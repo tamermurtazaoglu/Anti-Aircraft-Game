@@ -9,11 +9,13 @@ using System.Windows.Forms;
 
 namespace Savas.Library.Concrete
 {
-    internal class Antiaircraft : AppObject
+    internal class Antiaircraft : GameObject
     {
-        public Antiaircraft(int panelWidth)
+        public Antiaircraft(int panelWidth, Size movingAreaSizes) : base(movingAreaSizes)
         {
-            Left = (panelWidth - Width) / 2;
+            Image = Image.FromFile(@"Images\antiaircraft.gif");
+            Center = panelWidth / 2;
+            MovingDistance = Width / 10;
         }
     }
 }

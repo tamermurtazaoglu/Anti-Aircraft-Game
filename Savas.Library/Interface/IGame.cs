@@ -10,6 +10,6 @@ namespace Savas.Library.Interface
         TimeSpan ElapsedTime { get; }
         void Start();
         void Fire();
-        void Move(Direction direction);
+        void MoveAntiaircraft(Direction direction);
     }
 }

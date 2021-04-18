@@ -61,10 +61,10 @@ namespace Savas.Desktop
                     _game.Start();
                     break;
                 case Keys.Right:
-                    _game.Move(Direction.Right);
+                    _game.MoveAntiaircraft(Direction.Right);
                     break;
                 case Keys.Left:
-                    _game.Move(Direction.Left);
+                    _game.MoveAntiaircraft(Direction.Left);
                     break;
                 case Keys.Space:
                     _game.Fire();

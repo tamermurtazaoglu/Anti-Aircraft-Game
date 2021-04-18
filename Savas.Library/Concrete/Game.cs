@@ -12,6 +12,7 @@ namespace Savas.Library.Concrete
         private readonly Timer _elapsedTimeTimer = new Timer { Interval = 1000 };
         private TimeSpan _elapsedTime;
         private readonly Panel _antiaircraftPanel;
+        private Antiaircraft _antiaircraft;
         #endregion
 
         #region Events
@@ -47,12 +48,13 @@ namespace Savas.Library.Concrete
 
         public void Fire()
         {
-            throw new NotImplementedException();
         }
 
-        public void Move(Direction direction)
+        public void MoveAntiaircraft(Direction direction)
         {
-            throw new NotImplementedException();
+            if (!DoesItContinue) return;
+            
+            _antiaircraft.Move(direction);
         }
 
         public void Start()
@@ -66,8 +68,8 @@ namespace Savas.Library.Concrete
 
         private void Create_AntiAircraft()
         {
-            var antiAircraft = new Antiaircraft(_antiaircraftPanel.Width) { Image = Image.FromFile(@"Images\anti_aircraft.gif") };
-            _antiaircraftPanel.Controls.Add(antiAircraft);
+            _antiaircraft = new Antiaircraft(_antiaircraftPanel.Width, _antiaircraftPanel.Size);
+            _antiaircraftPanel.Controls.Add(_antiaircraft);
         }
 
         private void Finish()
