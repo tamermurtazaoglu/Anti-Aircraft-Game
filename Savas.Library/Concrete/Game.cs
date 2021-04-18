@@ -12,11 +12,13 @@ namespace Savas.Library.Concrete
         #region Alanlar
         private readonly Timer _elapsedTimeTimer = new Timer { Interval = 1000 };
         private readonly Timer _moveTimer = new Timer { Interval = 25 };
+        private readonly Timer _aircraftCreateTimer = new Timer { Interval = 2000 };
         private TimeSpan _elapsedTime;
         private readonly Panel _antiaircraftPanel;
         private Antiaircraft _antiaircraft;
         private readonly Panel _warareaPanel;
         private readonly List<Bullet> _bullets = new List<Bullet>();
+        private readonly List<Aircraft> _aircrafts = new List<Aircraft>();
         #endregion
 
         #region Events
@@ -45,6 +47,7 @@ namespace Savas.Library.Concrete
 
             _elapsedTimeTimer.Tick += ElapsedTimeTimer_Tick;
             _moveTimer.Tick += MoveTimer_Tick;
+            _aircraftCreateTimer.Tick += AircraftCreateTimer_Tick;
         }
 
         private void ElapsedTimeTimer_Tick(object sender, EventArgs e)
@@ -55,6 +58,11 @@ namespace Savas.Library.Concrete
         private void MoveTimer_Tick(object sender, EventArgs e)
         {
             MoveBullets();
+        }
+
+        private void AircraftCreateTimer_Tick(object sender, EventArgs e)
+        {
+            CreateAircraft();
         }
 
         private void MoveBullets()
@@ -93,12 +101,21 @@ namespace Savas.Library.Concrete
             StartTimers();
 
             Create_AntiAircraft();
+            CreateAircraft();
+        }
+
+        private void CreateAircraft()
+        {
+            var aircraft = new Aircraft(_warareaPanel.Size);
+            _warareaPanel.Controls.Add(aircraft);
+            _aircrafts.Add(aircraft);
         }
 
         private void StartTimers()
         {
             _elapsedTimeTimer.Start();
             _moveTimer.Start();
+            _aircraftCreateTimer.Start();
         }
 
         private void Create_AntiAircraft()
@@ -118,6 +135,7 @@ namespace Savas.Library.Concrete
         {
             _elapsedTimeTimer.Stop();
             _moveTimer.Stop();
+            _aircraftCreateTimer.Stop();
         }
 
         #endregion

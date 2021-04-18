@@ -46,6 +46,9 @@
     <Compile Include="Abstract\GameObject.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Concrete\Aircraft.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Concrete\Antiaircraft.cs">
       <SubType>Component</SubType>
     </Compile>
