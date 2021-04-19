@@ -14,7 +14,18 @@ namespace Savas.Library.Concrete
         public Aircraft(Size movingAreaSizes) : base(movingAreaSizes)
         {
             Image = Image.FromFile(@"Images\Aircraft.gif");
+            MovingDistance = (int)Height / 10;
             Left = Random.Next(movingAreaSizes.Width - Width + 1);
+        }
+
+        public Bullet BulletThatShotIt(List<Bullet> bullets)
+        {
+            foreach (var bullet in bullets)
+            {
+                var didItShot = bullet.Top < Bottom && bullet.Right > Left && bullet.Left < Right;
+                if (didItShot) return bullet;
+            }
+            return null;
         }
     }
 }

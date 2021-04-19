@@ -58,6 +58,36 @@ namespace Savas.Library.Concrete
         private void MoveTimer_Tick(object sender, EventArgs e)
         {
             MoveBullets();
+            MoveAirCrafts();
+            DeleteAircrafts();
+        }
+
+        private void DeleteAircrafts()
+        {
+            for (var i = _aircrafts.Count - 1; i >= 0; i--)
+            {
+                var aircraft = _aircrafts[i];
+
+                var bulletThatShotIt = aircraft.BulletThatShotIt(_bullets);
+                if (bulletThatShotIt is null) continue;
+
+                _aircrafts.Remove(aircraft);
+                _warareaPanel.Controls.Remove(aircraft);
+                _bullets.Remove(bulletThatShotIt);
+                _warareaPanel.Controls.Remove(bulletThatShotIt);
+
+            }
+        }
+
+        private void MoveAirCrafts()
+        {
+            foreach (var aircraft in _aircrafts)
+            {
+                var didHitToBottom = aircraft.Move(Direction.Down);
+                if (!didHitToBottom) continue;
+                Finish();
+                break;
+            }
         }
 
         private void AircraftCreateTimer_Tick(object sender, EventArgs e)
