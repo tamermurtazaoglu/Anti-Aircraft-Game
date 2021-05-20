@@ -11,12 +11,14 @@ namespace Savas.Library.Concrete
     internal class Aircraft : GameObject
     {
         private static readonly Random Random = new Random();
-        public Aircraft(Size movingAreaSizes) : base(movingAreaSizes)
+        public int Level { get; set; }
+        public Aircraft(string level, Size movingAreaSizes) : base(movingAreaSizes)
         {
-            Image = Image.FromFile(@"Images\Aircraft.gif");
+            Image = Image.FromFile($@"Images\Aircraft_Level{level}.gif");
             MovingDistance = (int)Height / 10;
             Left = Random.Next(movingAreaSizes.Width - Width + 1);
         }
+
 
         public Bullet BulletThatShotIt(List<Bullet> bullets)
         {

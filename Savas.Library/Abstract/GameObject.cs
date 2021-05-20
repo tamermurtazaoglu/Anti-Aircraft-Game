@@ -12,6 +12,7 @@ namespace Savas.Library.Abstract
 {
     internal abstract class GameObject : PictureBox, IMovable
     {
+        public bool isPaused = false;
         protected GameObject(Size movingAreaSizes)
         {
             SizeMode = PictureBoxSizeMode.AutoSize;

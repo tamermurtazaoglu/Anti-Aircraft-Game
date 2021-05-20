@@ -8,13 +8,18 @@ namespace Savas.Desktop
     public partial class MainForm : Form
     {
 
-        private readonly Game _game;
+        public int Difficulty { get; set; }
+
+        private Game _game;
+
+        private int maximumLevel = 3;
 
         public MainForm()
         {
             InitializeComponent();
-            _game = new Game(antiaircraftPanel,warAreaPanel);
+            _game = new Game(antiaircraftPanel,warAreaPanel,infoPanel,"1");
             _game.ElapsedTimeChanged += Game_ElapsedTimeChanged;
+            Difficulty = 1;
         }
 
         #region Customized design and flexibility
@@ -58,23 +63,54 @@ namespace Savas.Desktop
             switch (e.KeyCode)
             {
                 case Keys.Enter:
+                    if(!_game.DoesItContinue)
+                    {
+                        Game newGame = new Game(antiaircraftPanel, warAreaPanel, infoPanel, "1");
+                        _game = newGame;
+                        _game.ElapsedTimeChanged += Game_ElapsedTimeChanged;
+                        Difficulty = 1;
+                    }
                     _game.Start();
                     break;
+                case Keys.P:
+                    _game.PauseOrContinue();
+                    break;
                 case Keys.Right:
+                    if(_game.IsPaused == true) return;
                     _game.MoveAntiaircraft(Direction.Right);
                     break;
                 case Keys.Left:
+                    if (_game.IsPaused == true) return;
                     _game.MoveAntiaircraft(Direction.Left);
                     break;
                 case Keys.Space:
+                    if (_game.IsPaused == true) return;
                     _game.Fire();
                     break;
+
+
             }
         }
 
+        int tempTime = 0;
+        int _time = 0;
         private void Game_ElapsedTimeChanged(object sender, EventArgs e)
         {
             timeLabel.Text = _game.ElapsedTime.ToString(@"m\:ss");
+
+            tempTime += 1;
+            if (tempTime - _time == 10)
+            {
+                if (Difficulty > maximumLevel) return;
+                Difficulty += 1;
+                _game.SetDifficulty(Difficulty);
+                _time = _time + 10;
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

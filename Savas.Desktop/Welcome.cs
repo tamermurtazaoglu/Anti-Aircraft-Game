@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,7 +52,7 @@ namespace Savas.Desktop
 
         private void startbutton_MouseEnter(object sender, EventArgs e)
         {
-            startbutton.Image = Image.FromFile(@"Images\button_start_animated.gif");
+            //startbutton.Image = Image.FromFile(@"Images\button_start_animated.gif");
         }
 
         private void startbutton_MouseDown(object sender, MouseEventArgs e)
@@ -104,6 +105,12 @@ namespace Savas.Desktop
         private void closeButton_MouseLeave(object sender, EventArgs e)
         {
             closeButton.Image = Image.FromFile(@"Images\close.png");
+        }
+
+        private void top5ScoresLabel_Click(object sender, EventArgs e)
+        {
+            ScoreList scoreListForm = new ScoreList();
+            scoreListForm.ShowDialog();
         }
     }
 }
