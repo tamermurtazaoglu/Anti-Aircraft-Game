@@ -99,12 +99,12 @@ namespace Savas.Desktop
             timeLabel.Text = _game.ElapsedTime.ToString(@"m\:ss");
 
             tempTime += 1;
-            if (tempTime - _time == 10)
+            if (tempTime - _time == 30)
             {
                 if (Difficulty > maximumLevel) return;
                 Difficulty += 1;
                 _game.SetDifficulty(Difficulty);
-                _time = _time + 10;
+                _time = _time + 30;
             }
         }
 

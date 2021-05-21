@@ -35,6 +35,7 @@ namespace Savas.Desktop
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.closeButton = new System.Windows.Forms.PictureBox();
             this.top5ScoresLabel = new System.Windows.Forms.Label();
+            this.infoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.startbutton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -83,12 +84,20 @@ namespace Savas.Desktop
             this.top5ScoresLabel.Name = "top5ScoresLabel";
             this.top5ScoresLabel.Click += new System.EventHandler(this.top5ScoresLabel_Click);
             // 
+            // infoLabel
+            // 
+            resources.ApplyResources(this.infoLabel, "infoLabel");
+            this.infoLabel.BackColor = System.Drawing.Color.Transparent;
+            this.infoLabel.Name = "infoLabel";
+            this.infoLabel.Click += new System.EventHandler(this.infoLabel_Click);
+            // 
             // Welcome
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.BackgroundImage = global::Savas.Desktop.Properties.Resources.mainformBack2_1000x700;
+            this.Controls.Add(this.infoLabel);
             this.Controls.Add(this.top5ScoresLabel);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.pictureBox2);
@@ -115,6 +124,7 @@ namespace Savas.Desktop
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox closeButton;
         private System.Windows.Forms.Label top5ScoresLabel;
+        private System.Windows.Forms.Label infoLabel;
     }
 }
 

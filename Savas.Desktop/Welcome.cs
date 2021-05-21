@@ -46,13 +46,13 @@ namespace Savas.Desktop
 
         private void button1_MouseHover(object sender, EventArgs e)
         {
-            //this.BackgroundImage = Image.FromFile(@"Images\button_start_animated.jpg");
+            this.BackgroundImage = Image.FromFile(@"Images\button_start_animated.jpg");
         }
 
 
         private void startbutton_MouseEnter(object sender, EventArgs e)
         {
-            //startbutton.Image = Image.FromFile(@"Images\button_start_animated.gif");
+            startbutton.Image = Image.FromFile(@"Images\button_start_animated.gif");
         }
 
         private void startbutton_MouseDown(object sender, MouseEventArgs e)
@@ -111,6 +111,12 @@ namespace Savas.Desktop
         {
             ScoreList scoreListForm = new ScoreList();
             scoreListForm.ShowDialog();
+        }
+
+        private void infoLabel_Click(object sender, EventArgs e)
+        {
+            About aboutForm = new About();
+            aboutForm.ShowDialog();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Savas.Library.Concrete
         private readonly Panel _antiaircraftPanel;
         private Antiaircraft _antiaircraft;
         private int _score;
-        private int _health = 10;
+        private int _health = 100;
         private string _level;
         private readonly Panel _warareaPanel;
         private readonly Panel _infoPanel;
@@ -89,7 +89,7 @@ namespace Savas.Library.Concrete
                     break;
                 case 3:
                     _moveTimer.Enabled = false;
-                    _moveTimer.Interval =  10;
+                    _moveTimer.Interval =  15;
                     _moveTimer.Enabled = true;
                     _aircraftCreateTimer.Enabled = false;
                     _aircraftCreateTimer.Interval = 1000;
@@ -409,18 +409,16 @@ namespace Savas.Library.Concrete
 
                     File.WriteAllText(fileLocation, lastScores);
 
-
-                    MessageBox.Show(newScores[4].ToString() + "\n" +
-                                    newScores[3].ToString() + "\n" +
-                                    newScores[2].ToString() + "\n" +
-                                    newScores[1].ToString() + "\n" +
-                                    newScores[0].ToString() + "\n");
-
                     break;
                 }
             }
 
-          
+            MessageBox.Show(newScores[4].ToString() + "\n" +
+                  newScores[3].ToString() + "\n" +
+                  newScores[2].ToString() + "\n" +
+                  newScores[1].ToString() + "\n" +
+                  newScores[0].ToString() + "\n",
+                  "Top 5 Score List");
 
 
 
@@ -451,13 +449,6 @@ namespace Savas.Library.Concrete
             //                scores[2].ToString() + "\n" +
             //                scores[3].ToString() + "\n" +
             //                scores[4].ToString() + "\n" );
-
-
-
-            ////Dosyaya ekleyeceğimiz iki satırlık yazıyı WriteLine() metodu ile yazacağız.
-            ////Veriyi tampon bölgeden dosyaya aktardık.
-
-            ////İşimiz bitince kullandığımız nesneleri iade ettik.
         }
 
 
